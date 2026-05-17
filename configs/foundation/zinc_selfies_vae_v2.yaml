@@ -1,0 +1,49 @@
+# SELFIES VAE v2 — ZINC250K
+#
+# Key improvements over v1 (exact_recon 12.4%, 234/256 dims dead):
+#   1. Free bits (0.25/dim): prevents per-dimension posterior collapse
+#   2. KL warmup (30 epochs): lets encoder learn structure before KL kicks in
+#   3. Decoder pos_dropout (0.15): forces decoder to rely on z, not position alone
+#   4. Fewer decoder layers (4 vs 6): weaker decoder → stronger z-reliance
+#   5. β=0.005: slightly lower to allow more info through z
+#
+# Target: active_dims > 200/256, exact_recon > 40%
+
+experiment:
+  name: zinc_selfies_vae_v2
+  output_dir: outputs/zinc_selfies_vae_v2
+  seed: 42
+
+data:
+  cache_path: data/cache/zinc250k_smiles_cache.pt
+  train_ratio: 0.9
+
+model:
+  max_len: 64
+  latent_dim: 256
+  hidden_dim: 512
+  num_layers: 6          # encoder: 6
+  num_heads: 8
+  ff_mult: 4
+  dropout: 0.1
+  num_properties: 0
+  decoder_noise_std: 0.0
+  # Anti-posterior-collapse
+  free_bits: 0.25        # Per-dim KL floor: each dim carries ≥0.25 nats
+  pos_dropout: 0.15      # Randomly zero 15% of decoder position embeddings
+  dec_num_layers: 4      # Weaker decoder (4 layers vs 6 encoder layers)
+  pad_loss_weight: 0.5    # PAD prediction loss weight (prevents tail generation)
+
+training:
+  epochs: 200
+  batch_size: 512         # DDP: per-GPU batch → effective 512×4=2048
+  lr: 3.0e-4
+  weight_decay: 0.01
+  grad_clip_norm: 1.0
+  beta: 0.005            # lower β + free bits = balanced KL allocation
+  beta_warmup_epochs: 30 # ramp β from 0 to 0.005 over 30 epochs
+  kl_cycles: 0           # no cycling (warmup only)
+  use_cuda: true
+  eval_every: 5
+  patience: 80           # generous patience for longer convergence
+  selection_metric: val_loss

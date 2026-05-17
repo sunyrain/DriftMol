@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "reason": "fresh graph QED/LogP/no-drift, raw-vs-repaired validity, and bottleneck figure are complete",
+  "missing_runs": [],
+  "raw_vs_repair_complete": true,
+  "figure_pdf": "docs/figures/fig_graph_bottleneck.pdf",
+  "figure_png": "docs/figures/fig_graph_bottleneck.png",
+  "source": "results/graph_stress_test.json"
+}

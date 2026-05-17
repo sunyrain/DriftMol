@@ -1,0 +1,46 @@
+{
+  "description": "Reviewer-facing generalization experiments queued after VAE-drift robustness runs.",
+  "notes": [
+    "multi4_seed_stability turns the existing G4 multi4 v2 result into a three-seed stability check.",
+    "single_property_generalization tests whether the QED protocol transfers to LogP and SA-score targets.",
+    "These jobs should be launched with deferred prerequisites so they do not compete with active VAE-drift runs."
+  ],
+  "entries": [
+    {
+      "group": "multi4_seed_stability",
+      "name": "ext_G4_multi4_v2_s43",
+      "target_property": "multi4",
+      "config": "configs/publication_ext/generalization/ext_G4_multi4_v2_s43.yaml",
+      "output_dir": "outputs/publication_ext/generalization/ext_G4_multi4_v2_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/generalization/ext_G4_multi4_v2_s43.yaml",
+      "purpose": "additional seed for the four-property no-binning DriftingMol protocol"
+    },
+    {
+      "group": "multi4_seed_stability",
+      "name": "ext_G4_multi4_v2_s44",
+      "target_property": "multi4",
+      "config": "configs/publication_ext/generalization/ext_G4_multi4_v2_s44.yaml",
+      "output_dir": "outputs/publication_ext/generalization/ext_G4_multi4_v2_s44",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/generalization/ext_G4_multi4_v2_s44.yaml",
+      "purpose": "additional seed for the four-property no-binning DriftingMol protocol"
+    },
+    {
+      "group": "single_property_generalization",
+      "name": "ext_G4_logp_qed_s42",
+      "target_property": "logp",
+      "config": "configs/publication_ext/generalization/ext_G4_logp_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/generalization/ext_G4_logp_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/generalization/ext_G4_logp_qed_s42.yaml",
+      "purpose": "LogP single-property control with the balanced multi-layer protocol"
+    },
+    {
+      "group": "single_property_generalization",
+      "name": "ext_G4_sa_qed_s42",
+      "target_property": "sa_score",
+      "config": "configs/publication_ext/generalization/ext_G4_sa_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/generalization/ext_G4_sa_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/generalization/ext_G4_sa_qed_s42.yaml",
+      "purpose": "SA-score single-property control with the balanced multi-layer protocol"
+    }
+  ]
+}

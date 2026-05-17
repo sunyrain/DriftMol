@@ -1,0 +1,57 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{url}
+
+\urlstyle{rm}
+\frenchspacing
+
+\title{AAAI Reproducibility Checklist\\DriftingMol}
+\author{Jiangjie Qiu, Yijun Li, Wentao Li, Xiaonan Wang\\
+Beijing Key Laboratory of Artificial Intelligence for\\
+Advanced Chemical Engineering Materials}
+\date{}
+
+\begin{document}
+\maketitle
+
+This checklist is stored separately from the main paper PDF.
+
+\begin{enumerate}
+    \item \textbf{Claims and scope.} The paper states that DriftingMol is a
+    mechanism ablation for one-forward-pass property-biased SELFIES latent
+    generation, not a molecular-generation state-of-the-art claim.
+    \item \textbf{Theory.} Assumptions and proof sketches for decoder coupling,
+    the induced pullback metric, z-diversity, and inherited SELFIES validity are
+    given in the Mathematical Analysis section.
+    \item \textbf{Data.} Experiments use ZINC250K with a fixed
+    199,564/24,945/24,946 train/validation/test latent-cache split. The
+    evaluated properties are QED, SA, LogP, and molecular weight.
+    \item \textbf{Metrics.} The paper reports validity, uniqueness, novelty,
+    Spearman correlation, MAE, calibration slope, internal diversity, scaffold
+    diversity, and seed-level confidence intervals where available. RDKit parse
+    failures count against validity.
+    \item \textbf{Experimental protocol.} Conditional checkpoints are evaluated
+    with 10,000 generated molecules over
+    $\alpha\in\{1.0,1.5,2.0,3.0,5.0\}$, with the gate V$\ge$95\%,
+    U$\ge$10\%, N$\ge$95\%. Matched retrieval and VAE-jitter references are
+    evaluated with the same QED target bins and metric code.
+    \item \textbf{Hyperparameters and compute.} Core model sizes, loss weights,
+    temperatures, guidance grid, VAE reconstruction quality, and inference
+    throughput are reported in the paper; full run configurations and generated
+    result artifacts are maintained in the supplementary repository package.
+    \item \textbf{Randomness.} The key QED settings use seeds 42--44: default
+    DriftingMol, single-temperature decoder drift, no-diversity decoder drift,
+    and the balanced multi-layer decoder setting. Other ablations and the fair
+    four-property table are single seed unless otherwise stated.
+    \item \textbf{Baselines.} The submission includes internal ablations,
+    nonparametric matched references, and explicit limitations explaining the
+    absence of protocol-matched external molecular-generator baselines.
+    \item \textbf{Human subjects and societal impact.} No human-subject data are
+    used. Molecular generation is dual-use; generated molecules require
+    downstream filtering and expert review before experimental use.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,131 @@
+{
+  "overall": "PASS",
+  "rows": [
+    {
+      "requirement": "Comprehensive reviewer experiment plan exists",
+      "evidence": "docs/PUBLICATION_PLAN.md; docs/REVIEWER_EXPERIMENT_MATRIX.md; docs/REVIEWER_GOAL_COMPLETION_AUDIT.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Faithful Drifting plan exists",
+      "evidence": "docs/DRIFTING_FAITHFULNESS_PLAN.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Prompt-to-artifact checklist exists",
+      "evidence": "docs/REVIEWER_PROMPT_TO_ARTIFACT_CHECKLIST.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Equation-to-code algorithm audit exists",
+      "evidence": "docs/DRIFTING_ALGORITHM_AUDIT.md",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Algorithm 2 tensor equivalence passes",
+      "evidence": "results/drifting_faithfulness_status.json",
+      "status": "PASS",
+      "note": "max_abs_diff=0.0"
+    },
+    {
+      "requirement": "Strict reviewer-faithful config protocol passes",
+      "evidence": "results/drifting_faithfulness_status.json",
+      "status": "PASS",
+      "note": "checked=10, failures=[]"
+    },
+    {
+      "requirement": "Reviewer-faithful manifest has strict core and allocation configs",
+      "evidence": "configs/reviewer_faithful/manifest.json",
+      "status": "PASS",
+      "note": "entries=10, groups={'faithful_core': 4, 'faithful_allocation': 6}, missing_configs=[]"
+    },
+    {
+      "requirement": "Faithful result collection artifacts exist",
+      "evidence": "results/faithful_drifting.csv; results/tables/tab_faithful_drifting_core.tex; docs/SUPPLEMENT_FAITHFUL_DRIFTING_AAAI.tex; DriftingMol_AAAI_FaithfulSupplement.pdf",
+      "status": "PASS",
+      "note": ""
+    },
+    {
+      "requirement": "Strict faithful core runs are complete",
+      "evidence": "results/faithful_drifting_status.json",
+      "status": "PASS",
+      "note": "complete=4/4"
+    },
+    {
+      "requirement": "Strict faithful allocation sweeps are complete",
+      "evidence": "results/faithful_drifting_status.json; results/tables/tab_faithful_drifting_allocation.tex",
+      "status": "PASS",
+      "note": "complete=6/6"
+    },
+    {
+      "requirement": "Deferred faithful launcher completed or is active",
+      "evidence": "outputs/reviewer_faithful/deferred_faithful_core_launcher.pid; outputs/reviewer_faithful/core_status.json",
+      "status": "PASS",
+      "note": "pid_alive=False, core_state=completed, core_complete=True"
+    },
+    {
+      "requirement": "Destructive anti-symmetry evidence has minimum completed runs",
+      "evidence": "results/destructive_ablation_status.json",
+      "status": "PASS",
+      "note": "complete=7/7"
+    },
+    {
+      "requirement": "VAE sensitivity has at least one completed alternative",
+      "evidence": "results/vae_sensitivity_status.json",
+      "status": "PASS",
+      "note": "complete=4/4"
+    },
+    {
+      "requirement": "Graph archive launchability preflight is recorded",
+      "evidence": "scripts/audit_graph_archive_launchability.py; results/graph_archive_launchability_status.json; results/graph_archive_launchability_audit.md",
+      "status": "PASS",
+      "note": "complete=True, missing_artifacts=0, blockers=0, archived_metrics=2, graph_cache=True, legacy_latent_caches=2"
+    },
+    {
+      "requirement": "Graph stress prepared manifest exists",
+      "evidence": "configs/publication_ext/graph_stress_manifest.json; docs/GRAPH_NAMESPACE_ADAPTER_PLAN.md",
+      "status": "PASS",
+      "note": "entries=9, preconditions=5, launch_now=True, namespace_plan=True"
+    },
+    {
+      "requirement": "Downstream VAE-drift queue and collector are organized",
+      "evidence": "configs/publication_ext/vae_drift_manifest.json; scripts/collect_vae_drift_results.py; results/vae_drift_downstream_status.json",
+      "status": "PASS",
+      "note": "entries=4, complete=4/4, launchers_alive=0, automation_present=True, postprocess_ok=True, missing_configs=[]"
+    },
+    {
+      "requirement": "Generalization queue and collector are organized",
+      "evidence": "configs/publication_ext/generalization_manifest.json; scripts/collect_generalization_results.py; results/generalization_status.json",
+      "status": "PASS",
+      "note": "entries=4, complete=4/4, launchers_alive=0, postprocess_ok=True, missing_configs=[]"
+    },
+    {
+      "requirement": "Reviewer-extra queue and collector are organized",
+      "evidence": "configs/publication_ext/reviewer_extra_manifest.json; scripts/collect_reviewer_extra_results.py; results/reviewer_extra_status.json",
+      "status": "PASS",
+      "note": "entries=4, complete=4/4, launchers_alive=0, postprocess_ok=True, missing_configs=[]"
+    },
+    {
+      "requirement": "Next-wave reviewer experiments are prepared or running",
+      "evidence": "docs/NEXT_WAVE_EXPERIMENT_PLAN.md; configs/publication_ext/next_wave_manifest.json; scripts/collect_next_wave_results.py; results/next_wave_status.json; outputs/publication_ext/parallel_runner_status_next_wave_gpu0.json",
+      "status": "PASS",
+      "note": "entries=4, complete=4/4, runner_state=completed, missing_configs=[]"
+    },
+    {
+      "requirement": "Trained baseline queue and collector are organized",
+      "evidence": "configs/publication_ext/baseline_manifest.json; scripts/collect_trained_baselines.py; results/trained_baseline_status.json",
+      "status": "PASS",
+      "note": "entries=3, complete=3/3, missing_configs=[]"
+    },
+    {
+      "requirement": "Overall extension audit is closed",
+      "evidence": "results/extension_completion_status.json",
+      "status": "PASS",
+      "note": "complete=True"
+    }
+  ]
+}

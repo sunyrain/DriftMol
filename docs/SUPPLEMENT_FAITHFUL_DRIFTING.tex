@@ -1,0 +1,72 @@
+% Supplemental section for reviewer-facing faithful Drifting reproduction.
+% Keep this outside the 8-page main text unless space permits.
+% For final AAAI source packaging, inline the generated table contents if
+% separate \input files are disallowed by the submission source rules.
+
+\section{Faithful Drifting Reproduction}
+\label{sec:supp-faithful-drifting}
+
+This section separates faithful reproduction of Drifting Models from the
+DriftingMol-specific molecular extensions used in the main paper. The goal is
+to verify that the original drift-field recipe is implemented correctly before
+evaluating decoder-coupled molecular adaptations.
+
+\paragraph{Algorithm audit.}
+We audit the implementation against the original Drifting Models drift-field
+construction. The checked implementation uses generated samples as negatives,
+positive samples from the target QED bin, an L2 kernel, joint positive/negative
+normalization, bidirectional softmax normalization, cross-multiplication of
+positive and negative masses, and the anti-symmetric field $V = V^+ - V^-$.
+The tensor-level audit compares the production implementation with a direct
+pseudocode transcription on synthetic tensors; the current audit artifact is
+\path{results/drifting_faithfulness_status.json}.
+
+\paragraph{Strict molecular analogue.}
+The strict reproduction experiments use a frozen latent-MAE feature extractor
+as $\phi$, QED quantile bins as class labels, generated samples as negatives,
+$N_c=64$, $N_{\mathrm{pos}}=64$, $N_{\mathrm{neg}}=64$, temperatures
+$\{0.02,0.05,0.2\}$, Appendix-A.6 feature-distance/drift normalization, and
+no z-diversity or decoder-coupled drift terms. Property-aware, random-feature,
+and z-space controls test whether the learned feature metric is necessary.
+
+\begin{table}[!h]
+\centering
+\caption{Strict faithful-Drifting core runs. These rows use the Algorithm-2
+drift field without decoder-coupled drift or diversity regularization.}
+\label{tab:supp-faithful-core}
+\resizebox{\columnwidth}{!}{%
+\input{../results/tables/tab_faithful_drifting_core.tex}
+}
+\end{table}
+
+\paragraph{Positive and negative allocation.}
+The allocation sweep mirrors the original Drifting Models sample-estimation
+question: whether increasing the number of positives or generated negatives
+improves the drift estimate under a fixed effective batch budget. All six
+allocation rows are complete. They should be read as boundary-condition
+evidence: increasing $N_{\mathrm{pos}}$ from 1 through 64 improves uniqueness,
+but the generated QED distribution remains concentrated near the decoder's
+central QED region, so target tracking is still weak. The two negative-sample
+rows produce the strongest allocation results ($\rho\approx0.076$) and recover
+about 80\% uniqueness, but they remain below the pre-specified target-tracking
+threshold.
+
+\begin{table}[!h]
+\centering
+\caption{Positive/negative allocation sweep for faithful Drifting. Allocation
+improves diversity more reliably than QED target tracking.}
+\label{tab:supp-faithful-allocation}
+\resizebox{\columnwidth}{!}{%
+\input{../results/tables/tab_faithful_drifting_allocation.tex}
+}
+\end{table}
+
+\paragraph{Claim policy.}
+The strict core evidence should be described conservatively: direct faithful
+Drifting is reproducible in the molecular latent setting, but the observed
+control is modest and remains weaker than the decoder-coupled main method.
+Current allocation rows strengthen this conservative interpretation rather
+than the main performance claim. The faithfulness audit is now closed for the
+strict Drifting reproduction package, but the observed molecular control signal
+supports a representation-limited interpretation rather than a feature-space
+superiority claim.

@@ -1,0 +1,149 @@
+{
+  "description": "Complete graph-route recovery, graph latent drifting, decode-validity, and SELFIES fairness package.",
+  "resource_policy": {
+    "launch_now": true,
+    "reason": "GPU2 is idle; the graph route is now treated as a required reviewer-facing experiment chain rather than a diagnostic note.",
+    "minimum_recommended_disk_free_gb": 12,
+    "checkpoint_policy": "Keep best.pt/final_metrics.json/resolved_config.json; delete completed last.pt files only after their final metrics and best checkpoint are confirmed."
+  },
+  "preconditions": [
+    "Rebuild archive/graph_vae_line/data/qm9/qm9_from_cache.smi and archive/graph_vae_line/data/cache/qm9_graph_cache.pt from the recovered QM9 SMILES list.",
+    "Train archive/graph_vae_line/outputs/vae_v3_valence/best.pt with the recovered graph cache.",
+    "Rebuild archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt from the recovered VAE checkpoint.",
+    "Train archive/graph_vae_line/outputs/latent_mae_v3/best_latent_mae.pt.",
+    "Require scripts/audit_graph_archive_launchability.py complete=true before launching fresh graph latent drifting rows."
+  ],
+  "archived_diagnostics": [
+    {
+      "name": "e36_dec_drift_cfg",
+      "property": "qed",
+      "metrics": "archive/graph_vae_line/outputs/e36_dec_drift_cfg/final_metrics.json",
+      "best_archived_rho": 0.159,
+      "purpose": "diagnostic archived graph QED decoder-drift CFG evidence; to be superseded by graph_fresh_qed_e36"
+    },
+    {
+      "name": "e40_logp_bins_queue",
+      "property": "logp",
+      "metrics": "archive/graph_vae_line/outputs/e40_logp_bins_queue/final_metrics.json",
+      "best_archived_rho": 0.145,
+      "purpose": "diagnostic archived graph LogP bin-queue evidence; to be superseded by graph_fresh_logp_e40"
+    }
+  ],
+  "entries": [
+    {
+      "group": "graph_recovery",
+      "name": "graph_rebuild_qm9_graph_cache",
+      "config": "scripts/rebuild_graph_qm9_cache_from_smiles.py",
+      "output_dir": "archive/graph_vae_line/data/cache",
+      "expected_artifact": "archive/graph_vae_line/data/cache/qm9_graph_cache.pt",
+      "command": "python scripts/rebuild_graph_qm9_cache_from_smiles.py",
+      "blocked_by": [],
+      "purpose": "recover the graph tensor dataset from the archived QM9 SMILES list"
+    },
+    {
+      "group": "graph_recovery",
+      "name": "graph_recover_vae_v3_valence",
+      "config": "archive/graph_vae_line/configs/publication/vae_v3_valence_recover.yaml",
+      "output_dir": "archive/graph_vae_line/outputs/vae_v3_valence",
+      "expected_artifact": "archive/graph_vae_line/outputs/vae_v3_valence/best.pt",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python -m src.train.train_vae --config configs/publication/vae_v3_valence_recover.yaml --resume",
+      "blocked_by": [
+        "archive/graph_vae_line/data/cache/qm9_graph_cache.pt",
+        "idle GPU"
+      ],
+      "purpose": "recover the graph VAE checkpoint required by graph latent drifting"
+    },
+    {
+      "group": "graph_recovery",
+      "name": "graph_rebuild_latent_cache_v3",
+      "config": "archive/graph_vae_line/configs/publication/vae_v3_valence_recover.yaml",
+      "output_dir": "archive/graph_vae_line/data/cache",
+      "expected_artifact": "archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python scripts/build_latent_cache.py --vae_ckpt outputs/vae_v3_valence/best.pt --output data/cache/qm9_latent_cache_v3.pt",
+      "blocked_by": [
+        "archive/graph_vae_line/outputs/vae_v3_valence/best.pt"
+      ],
+      "purpose": "recreate the graph latent cache consumed by graph-control configs"
+    },
+    {
+      "group": "graph_recovery",
+      "name": "graph_recover_latent_mae_v3",
+      "config": "archive/graph_vae_line/configs/publication/latent_mae_v3_recover.yaml",
+      "output_dir": "archive/graph_vae_line/outputs/latent_mae_v3",
+      "expected_artifact": "archive/graph_vae_line/outputs/latent_mae_v3/best_latent_mae.pt",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python -m src.train.train_latent_mae configs/publication/latent_mae_v3_recover.yaml",
+      "blocked_by": [
+        "archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt",
+        "idle GPU"
+      ],
+      "purpose": "recover the graph latent-feature extractor used by decoder-drift CFG"
+    },
+    {
+      "group": "graph_control",
+      "name": "graph_fresh_qed_e36",
+      "property": "qed",
+      "config": "archive/graph_vae_line/configs/publication/e36_dec_drift_cfg_fresh.yaml",
+      "output_dir": "outputs/publication_ext/graph_stress/e36_dec_drift_cfg_fresh",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python -m src.train.train_generator --config configs/publication/e36_dec_drift_cfg_fresh.yaml",
+      "blocked_by": [
+        "graph_archive_launchability_complete",
+        "idle GPU"
+      ],
+      "purpose": "fresh graph QED control reproduction for the SELFIES-validity reviewer concern"
+    },
+    {
+      "group": "graph_control",
+      "name": "graph_fresh_logp_e40",
+      "property": "logp",
+      "config": "archive/graph_vae_line/configs/publication/e40_logp_bins_queue_fresh.yaml",
+      "output_dir": "outputs/publication_ext/graph_stress/e40_logp_bins_queue_fresh",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python -m src.train.train_generator --config configs/publication/e40_logp_bins_queue_fresh.yaml",
+      "blocked_by": [
+        "graph_archive_launchability_complete",
+        "idle GPU"
+      ],
+      "purpose": "fresh graph LogP control reproduction for property-transfer reviewer concern"
+    },
+    {
+      "group": "graph_destructive",
+      "name": "graph_qed_destructive_no_drift",
+      "property": "qed",
+      "config": "archive/graph_vae_line/configs/publication/e36_no_drift_fresh.yaml",
+      "output_dir": "outputs/publication_ext/graph_stress/e36_no_drift_fresh",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python -m src.train.train_generator --config configs/publication/e36_no_drift_fresh.yaml",
+      "blocked_by": [
+        "archive/graph_vae_line/outputs/latent_mae_v3/best_latent_mae.pt",
+        "archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt",
+        "idle GPU"
+      ],
+      "purpose": "tests whether graph QED signal depends on drift rather than CFG conditioning alone"
+    },
+    {
+      "group": "graph_decode_diagnostic",
+      "name": "graph_raw_vs_repaired_decode",
+      "property": "validity",
+      "config": "archive/graph_vae_line/scripts/eval_raw_vs_repair.py",
+      "output_dir": "archive/graph_vae_line/outputs",
+      "command": "cd archive/graph_vae_line && PYTHONPATH=. python scripts/eval_raw_vs_repair.py --experiments ../../outputs/publication_ext/graph_stress/e36_dec_drift_cfg_fresh ../../outputs/publication_ext/graph_stress/e40_logp_bins_queue_fresh --temperatures 0.0 0.5 1.0 --num_samples 10000 --batch_size 256",
+      "blocked_by": [
+        "graph_fresh_qed_e36",
+        "graph_fresh_logp_e40"
+      ],
+      "purpose": "separates raw graph validity from repaired validity under the fresh graph generators"
+    },
+    {
+      "group": "comparison",
+      "name": "graph_selfies_fair_comparison",
+      "property": "qed_logp_validity",
+      "config": "scripts/summarize_graph_stress.py",
+      "output_dir": "results",
+      "command": "python scripts/summarize_graph_stress.py && python scripts/plot_graph_stress.py",
+      "blocked_by": [
+        "graph_fresh_qed_e36",
+        "graph_fresh_logp_e40",
+        "graph_raw_vs_repaired_decode"
+      ],
+      "purpose": "produce the graph-vs-SELFIES table under the same validity, uniqueness, novelty, and property-control reporting contract"
+    }
+  ]
+}

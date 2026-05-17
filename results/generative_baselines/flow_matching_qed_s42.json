@@ -1,0 +1,163 @@
+{
+  "protocol": {
+    "baseline_type": "same-backbone conditional generative baseline",
+    "method": "flow_matching",
+    "label": "Conditional latent Flow Matching",
+    "target_property": "qed",
+    "num_samples": 10000,
+    "n_bins": 20,
+    "samples_per_bin": 500,
+    "seed": 42,
+    "nfe": 50,
+    "normalized_latent_space": true,
+    "selfies_decoder": "outputs/foundation/zinc_selfies_vae_v2/best.pt"
+  },
+  "target_centers": [
+    0.38583865761756897,
+    0.49557581543922424,
+    0.5570545792579651,
+    0.601134181022644,
+    0.6342487335205078,
+    0.6631583571434021,
+    0.6889211535453796,
+    0.7134847640991211,
+    0.734467089176178,
+    0.7534281015396118,
+    0.7709658145904541,
+    0.7864506244659424,
+    0.8011267781257629,
+    0.8162166476249695,
+    0.8313475847244263,
+    0.8455615043640137,
+    0.859817385673523,
+    0.8759264349937439,
+    0.8959314227104187,
+    0.922606885433197
+  ],
+  "bin_summaries": [
+    {
+      "bin": 0,
+      "target": 0.38583865761756897,
+      "selected": 500
+    },
+    {
+      "bin": 1,
+      "target": 0.49557581543922424,
+      "selected": 500
+    },
+    {
+      "bin": 2,
+      "target": 0.5570545792579651,
+      "selected": 500
+    },
+    {
+      "bin": 3,
+      "target": 0.601134181022644,
+      "selected": 500
+    },
+    {
+      "bin": 4,
+      "target": 0.6342487335205078,
+      "selected": 500
+    },
+    {
+      "bin": 5,
+      "target": 0.6631583571434021,
+      "selected": 500
+    },
+    {
+      "bin": 6,
+      "target": 0.6889211535453796,
+      "selected": 500
+    },
+    {
+      "bin": 7,
+      "target": 0.7134847640991211,
+      "selected": 500
+    },
+    {
+      "bin": 8,
+      "target": 0.734467089176178,
+      "selected": 500
+    },
+    {
+      "bin": 9,
+      "target": 0.7534281015396118,
+      "selected": 500
+    },
+    {
+      "bin": 10,
+      "target": 0.7709658145904541,
+      "selected": 500
+    },
+    {
+      "bin": 11,
+      "target": 0.7864506244659424,
+      "selected": 500
+    },
+    {
+      "bin": 12,
+      "target": 0.8011267781257629,
+      "selected": 500
+    },
+    {
+      "bin": 13,
+      "target": 0.8162166476249695,
+      "selected": 500
+    },
+    {
+      "bin": 14,
+      "target": 0.8313475847244263,
+      "selected": 500
+    },
+    {
+      "bin": 15,
+      "target": 0.8455615043640137,
+      "selected": 500
+    },
+    {
+      "bin": 16,
+      "target": 0.859817385673523,
+      "selected": 500
+    },
+    {
+      "bin": 17,
+      "target": 0.8759264349937439,
+      "selected": 500
+    },
+    {
+      "bin": 18,
+      "target": 0.8959314227104187,
+      "selected": 500
+    },
+    {
+      "bin": 19,
+      "target": 0.922606885433197,
+      "selected": 500
+    }
+  ],
+  "metrics": {
+    "num_samples": 10000,
+    "num_valid": 10000,
+    "validity": 1.0,
+    "uniqueness": 0.984,
+    "novelty": 1.0,
+    "spearman_rho": 0.08306813318026214,
+    "spearman_pval": 8.784691252595645e-17,
+    "pearson_r": 0.09178632872766052,
+    "mae": 0.2538660673924342,
+    "slope": 0.1245800721555303,
+    "intercept": 0.42867227436294036,
+    "success_0p05": 0.1179,
+    "success_0p10": 0.2335,
+    "target_mean": 0.7316631257534028,
+    "actual_mean": 0.5198229193628394,
+    "int_div": 0.9066138684220172,
+    "scaffold_diversity": 0.6111,
+    "n_unique_scaffolds": 6111,
+    "min_bin_uniqueness": 0.992
+  },
+  "runtime": {
+    "total_seconds": 49.276506662368774
+  }
+}

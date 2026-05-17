@@ -1,0 +1,119 @@
+{
+  "complete": true,
+  "checks": [
+    {
+      "requirement": "Current main submission package remains audited",
+      "evidence": "results/publication_completion_audit.md contains Overall: PASS",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Graph diagnostic snapshot exists",
+      "evidence": "10 graph stress rows; artifacts present",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Graph stress follow-up execution plan exists",
+      "evidence": "docs/GRAPH_STRESS_EXECUTION_PLAN.md present; missing_sections=['Fresh graph QED control reproduction', 'Fresh graph LogP control reproduction', 'Graph destructive drift ablation']",
+      "status": "OPEN",
+      "required": false
+    },
+    {
+      "requirement": "Graph stress prepared manifest exists",
+      "evidence": "entries=9; preconditions=5; archived_diagnostics=2; namespace_plan=True",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Graph archive launchability preflight exists",
+      "evidence": "complete=True; missing_artifacts=0; blockers=0; archived_metrics=2",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Full graph representation stress test is complete",
+      "evidence": "results/graph_stress_full_status.json complete=True; figure_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Destructive drift ablation infrastructure is ready",
+      "evidence": "7 runnable destructive configs; source scale hooks present",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Parallel extension runner is available",
+      "evidence": "script exists; last_state=completed; devices=0,1,2,3",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Destructive drift ablation results are complete",
+      "evidence": "complete=7/7, pending_or_incomplete=0, status_counts={'complete_fail': 2, 'complete_pass': 5}, minimum_completed_runs_reached=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Protocol-matched baselines cover at least three non-trivial methods",
+      "evidence": "baselines=3; table_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "VAE sensitivity study is complete",
+      "evidence": "configs=4, complete=4/4, pending_or_incomplete=0",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Downstream VAE-drift queue and collector are ready",
+      "evidence": "entries=4, collector=True, status=True, table=True",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Downstream VAE-drift results are complete for all alternative checkpoints",
+      "evidence": "complete=4/4, pending_or_incomplete=0, table_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Generalization queue and collector are ready",
+      "evidence": "entries=4, missing_configs=[], collector=True, status=True, table=True, launchers=4, postprocess=True",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Generalization results are complete",
+      "evidence": "complete=4/4, pending_or_incomplete=0, table_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Reviewer-extra queue and collector are ready",
+      "evidence": "entries=4, missing_configs=[], collector=True, watcher=True, status=True, table=True, launchers=4, postprocess=True",
+      "status": "PASS",
+      "required": false
+    },
+    {
+      "requirement": "Reviewer-extra bin/seed robustness results are complete",
+      "evidence": "complete=4/4, pending_or_incomplete=0, table_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Trained property-guidance baseline has a three-seed summary",
+      "evidence": "manifest_entries=3, complete=3/3, three_seed_complete=True, table_exists=True",
+      "status": "PASS",
+      "required": true
+    },
+    {
+      "requirement": "Extension execution checklist and destructive result artifacts exist",
+      "evidence": "all present",
+      "status": "PASS",
+      "required": true
+    }
+  ]
+}

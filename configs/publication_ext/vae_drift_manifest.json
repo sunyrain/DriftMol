@@ -1,0 +1,70 @@
+{
+  "description": "Downstream DriftingMol checks under alternative SELFIES VAE checkpoints.",
+  "notes": [
+    "Each entry first builds a latent cache for the selected VAE if it is missing.",
+    "These runs test whether QED drifting depends on one SELFIES VAE architecture or beta setting.",
+    "They are extension-stage reviewer experiments and should be interpreted separately from the locked 8-page draft until complete."
+  ],
+  "entries": [
+    {
+      "group": "vae_drift_downstream",
+      "name": "ext_vae_lowbeta_drift_qed_s42",
+      "display": "Low-beta VAE",
+      "config": "configs/publication_ext/vae_drift/ext_vae_lowbeta_drift_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_lowbeta_drift_qed_s42",
+      "command": "test -f outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/final_metrics.json && if [ ! -f data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt ]; then python scripts/build_selfies_latent_cache.py --vae_ckpt outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/best.pt --graph_cache data/cache/zinc250k_smiles_cache.pt --output data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt --batch_size 2048; fi && python -m src.train.train_selfies_cfg --config configs/publication_ext/vae_drift/ext_vae_lowbeta_drift_qed_s42.yaml",
+      "purpose": "downstream DriftingMol check using the completed low-beta SELFIES VAE",
+      "depends_on": [
+        "outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/final_metrics.json"
+      ],
+      "vae_run": "ext_V_BETA_LOW_vae_s42",
+      "vae_checkpoint": "outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/best.pt",
+      "latent_cache": "data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt"
+    },
+    {
+      "group": "vae_drift_downstream",
+      "name": "ext_vae_highbeta_drift_qed_s42",
+      "display": "High-beta VAE",
+      "config": "configs/publication_ext/vae_drift/ext_vae_highbeta_drift_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_highbeta_drift_qed_s42",
+      "command": "test -f outputs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42/final_metrics.json && if [ ! -f data/cache/zinc_latent_cache_ext_vae_highbeta_s42.pt ]; then python scripts/build_selfies_latent_cache.py --vae_ckpt outputs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42/best.pt --graph_cache data/cache/zinc250k_smiles_cache.pt --output data/cache/zinc_latent_cache_ext_vae_highbeta_s42.pt --batch_size 2048; fi && python -m src.train.train_selfies_cfg --config configs/publication_ext/vae_drift/ext_vae_highbeta_drift_qed_s42.yaml",
+      "purpose": "downstream DriftingMol check using the completed high-beta SELFIES VAE",
+      "depends_on": [
+        "outputs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42/final_metrics.json"
+      ],
+      "vae_run": "ext_V_BETA_HIGH_vae_s42",
+      "vae_checkpoint": "outputs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42/best.pt",
+      "latent_cache": "data/cache/zinc_latent_cache_ext_vae_highbeta_s42.pt"
+    },
+    {
+      "group": "vae_drift_downstream",
+      "name": "ext_vae_latent128_drift_qed_s42",
+      "display": "Latent-128 VAE",
+      "config": "configs/publication_ext/vae_drift/ext_vae_latent128_drift_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_latent128_drift_qed_s42",
+      "command": "test -f outputs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42/final_metrics.json && if [ ! -f data/cache/zinc_latent_cache_ext_vae_latent128_s42.pt ]; then python scripts/build_selfies_latent_cache.py --vae_ckpt outputs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42/best.pt --graph_cache data/cache/zinc250k_smiles_cache.pt --output data/cache/zinc_latent_cache_ext_vae_latent128_s42.pt --batch_size 2048; fi && python -m src.train.train_selfies_cfg --config configs/publication_ext/vae_drift/ext_vae_latent128_drift_qed_s42.yaml",
+      "purpose": "downstream DriftingMol architecture check using a narrower latent bottleneck",
+      "depends_on": [
+        "outputs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42/final_metrics.json"
+      ],
+      "vae_run": "ext_V_LATENT128_vae_s42",
+      "vae_checkpoint": "outputs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42/best.pt",
+      "latent_cache": "data/cache/zinc_latent_cache_ext_vae_latent128_s42.pt"
+    },
+    {
+      "group": "vae_drift_downstream",
+      "name": "ext_vae_dec6_drift_qed_s42",
+      "display": "Decoder-6 VAE",
+      "config": "configs/publication_ext/vae_drift/ext_vae_dec6_drift_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_dec6_drift_qed_s42",
+      "command": "test -f outputs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42/final_metrics.json && if [ ! -f data/cache/zinc_latent_cache_ext_vae_dec6_s42.pt ]; then python scripts/build_selfies_latent_cache.py --vae_ckpt outputs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42/best.pt --graph_cache data/cache/zinc250k_smiles_cache.pt --output data/cache/zinc_latent_cache_ext_vae_dec6_s42.pt --batch_size 2048; fi && python -m src.train.train_selfies_cfg --config configs/publication_ext/vae_drift/ext_vae_dec6_drift_qed_s42.yaml",
+      "purpose": "downstream DriftingMol architecture check using a deeper decoder",
+      "depends_on": [
+        "outputs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42/final_metrics.json"
+      ],
+      "vae_run": "ext_V_DEC6_vae_s42",
+      "vae_checkpoint": "outputs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42/best.pt",
+      "latent_cache": "data/cache/zinc_latent_cache_ext_vae_dec6_s42.pt"
+    }
+  ]
+}

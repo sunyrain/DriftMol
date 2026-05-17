@@ -1,0 +1,4 @@
+310M outputs/publication/seeds/pub_A6_qed_s44/last.pt
+310M outputs/publication/seeds/pub_A8_qed_s44/last.pt
+310M outputs/publication/seeds/pub_F_qed_s44/last.pt
+310M outputs/publication/seeds/pub_G4_qed_s43/last.pt

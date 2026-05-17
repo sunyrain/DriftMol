@@ -1,0 +1,27 @@
+{
+  "manifest": "configs/publication_ext/reviewer_extra_manifest.json",
+  "num_experiments": 4,
+  "complete": 4,
+  "pending_or_incomplete": 0,
+  "status_counts": {
+    "complete_pass": 4
+  },
+  "groups": {
+    "continuous_conditioning": {
+      "total": 1,
+      "complete": 1,
+      "pending_or_incomplete": 0
+    },
+    "single_property_seed_extension": {
+      "total": 2,
+      "complete": 2,
+      "pending_or_incomplete": 0
+    },
+    "vae_drift_seed_extension": {
+      "total": 1,
+      "complete": 1,
+      "pending_or_incomplete": 0
+    }
+  },
+  "pending_or_incomplete_entries": []
+}

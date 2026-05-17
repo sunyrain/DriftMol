@@ -1,0 +1,91 @@
+{
+  "description": "Reviewer-facing faithful Drifting reproduction matrix for DriftingMol.",
+  "notes": [
+    "These runs are supplemental. The strict core queue is deferred until destructive ablations finish, while VAE sensitivity can continue on GPU1.",
+    "They isolate whether the original Drifting Models recipe works in the SELFIES latent setting before decoder-coupled modifications.",
+    "The strict core setting mirrors Algorithm 2 plus Appendix-A.6 normalization, latent-MAE phi, generated negatives, N_c=64, N_pos=64, N_neg=64, and tau={0.02,0.05,0.2}.",
+    "QED quantile bins are used as class labels, which is the molecular analogue of ImageNet class conditioning."
+  ],
+  "entries": [
+    {
+      "group": "faithful_core",
+      "name": "rf_FD_STRICT_PLAIN_PHI_QED_s42",
+      "config": "configs/reviewer_faithful/core/rf_FD_STRICT_PLAIN_PHI_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/core/rf_FD_STRICT_PLAIN_PHI_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/core/rf_FD_STRICT_PLAIN_PHI_QED_s42.yaml",
+      "purpose": "Strict molecular analogue of original Drifting: latent-MAE phi, Algorithm 2, generated negatives, QED bins as classes."
+    },
+    {
+      "group": "faithful_core",
+      "name": "rf_FD_STRICT_PROP_PHI_QED_s42",
+      "config": "configs/reviewer_faithful/core/rf_FD_STRICT_PROP_PHI_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/core/rf_FD_STRICT_PROP_PHI_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/core/rf_FD_STRICT_PROP_PHI_QED_s42.yaml",
+      "purpose": "Feature-quality check mirroring latent-MAE + classifier fine-tuning: property-aware phi, same Drifting protocol."
+    },
+    {
+      "group": "faithful_core",
+      "name": "rf_FD_STRICT_RANDOM_PHI_QED_s42",
+      "config": "configs/reviewer_faithful/core/rf_FD_STRICT_RANDOM_PHI_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/core/rf_FD_STRICT_RANDOM_PHI_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/core/rf_FD_STRICT_RANDOM_PHI_QED_s42.yaml",
+      "purpose": "Random frozen phi control: tests whether Algorithm 2 needs a meaningful feature metric."
+    },
+    {
+      "group": "faithful_core",
+      "name": "rf_FD_STRICT_ZSPACE_QED_s42",
+      "config": "configs/reviewer_faithful/core/rf_FD_STRICT_ZSPACE_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/core/rf_FD_STRICT_ZSPACE_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/core/rf_FD_STRICT_ZSPACE_QED_s42.yaml",
+      "purpose": "No-feature z-space control: molecular analogue of the original paper's feature-extractor necessity claim."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_POS01_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS01_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_POS01_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS01_QED_s42.yaml",
+      "purpose": "Positive-sample allocation ablation: Npos=1 with fixed N_c=64, Nneg=64."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_POS16_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS16_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_POS16_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS16_QED_s42.yaml",
+      "purpose": "Positive-sample allocation ablation: Npos=16 with fixed N_c=64, Nneg=64."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_POS32_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS32_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_POS32_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS32_QED_s42.yaml",
+      "purpose": "Positive-sample allocation ablation: Npos=32 with fixed N_c=64, Nneg=64."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_POS64_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS64_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_POS64_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_POS64_QED_s42.yaml",
+      "purpose": "Positive-sample allocation ablation baseline: Npos=64 with fixed N_c=64, Nneg=64."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_NEG16_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG16_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG16_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG16_QED_s42.yaml",
+      "purpose": "Negative-sample allocation ablation: B=4096 with Nneg=16."
+    },
+    {
+      "group": "faithful_allocation",
+      "name": "rf_FD_ALLOC_NEG32_QED_s42",
+      "config": "configs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG32_QED_s42.yaml",
+      "output_dir": "outputs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG32_QED_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/reviewer_faithful/allocation/rf_FD_ALLOC_NEG32_QED_s42.yaml",
+      "purpose": "Negative-sample allocation ablation: B=4096 with Nneg=32."
+    }
+  ]
+}

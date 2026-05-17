@@ -1,0 +1,122 @@
+{
+  "note": "Live snapshot parsed from logs; use final_metrics.json for paper claims.",
+  "num_experiments": 4,
+  "rows": [
+    {
+      "experiment": "ext_vae_lowbeta_drift_qed_s42",
+      "display": "Low-beta VAE",
+      "purpose": "downstream DriftingMol check using the completed low-beta SELFIES VAE",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_lowbeta_drift_qed_s42",
+      "log": "outputs/publication_ext/vae_drift_logs/ext_vae_lowbeta_drift_qed_s42.log",
+      "exists": true,
+      "num_evals": 61,
+      "last_eval": {
+        "epoch": 300,
+        "validity": 1.0,
+        "uniqueness": 0.99,
+        "novelty": 0.9990000000000001,
+        "spearman_rho": 0.467,
+        "mae": 0.164,
+        "slope": 0.605,
+        "gate": "PASS"
+      },
+      "best_eval": {
+        "epoch": 270,
+        "validity": 1.0,
+        "uniqueness": 0.99,
+        "novelty": 0.9990000000000001,
+        "spearman_rho": 0.514,
+        "mae": 0.164,
+        "slope": 0.687,
+        "gate": "PASS"
+      }
+    },
+    {
+      "experiment": "ext_vae_highbeta_drift_qed_s42",
+      "display": "High-beta VAE",
+      "purpose": "downstream DriftingMol check using the completed high-beta SELFIES VAE",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_highbeta_drift_qed_s42",
+      "log": "outputs/publication_ext/vae_drift_logs/ext_vae_highbeta_drift_qed_s42.log",
+      "exists": true,
+      "num_evals": 61,
+      "last_eval": {
+        "epoch": 300,
+        "validity": 1.0,
+        "uniqueness": 0.988,
+        "novelty": 1.0,
+        "spearman_rho": 0.31,
+        "mae": 0.285,
+        "slope": 0.391,
+        "gate": "PASS"
+      },
+      "best_eval": {
+        "epoch": 155,
+        "validity": 1.0,
+        "uniqueness": 0.988,
+        "novelty": 1.0,
+        "spearman_rho": 0.354,
+        "mae": 0.28,
+        "slope": 0.447,
+        "gate": "PASS"
+      }
+    },
+    {
+      "experiment": "ext_vae_latent128_drift_qed_s42",
+      "display": "Latent-128 VAE",
+      "purpose": "downstream DriftingMol architecture check using a narrower latent bottleneck",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_latent128_drift_qed_s42",
+      "log": "outputs/publication_ext/vae_drift_logs/ext_vae_latent128_drift_qed_s42.log",
+      "exists": true,
+      "num_evals": 61,
+      "last_eval": {
+        "epoch": 300,
+        "validity": 1.0,
+        "uniqueness": 0.991,
+        "novelty": 1.0,
+        "spearman_rho": 0.443,
+        "mae": 0.159,
+        "slope": 0.552,
+        "gate": "PASS"
+      },
+      "best_eval": {
+        "epoch": 280,
+        "validity": 1.0,
+        "uniqueness": 0.995,
+        "novelty": 1.0,
+        "spearman_rho": 0.487,
+        "mae": 0.156,
+        "slope": 0.617,
+        "gate": "PASS"
+      }
+    },
+    {
+      "experiment": "ext_vae_dec6_drift_qed_s42",
+      "display": "Decoder-6 VAE",
+      "purpose": "downstream DriftingMol architecture check using a deeper decoder",
+      "output_dir": "outputs/publication_ext/vae_drift/ext_vae_dec6_drift_qed_s42",
+      "log": "outputs/publication_ext/vae_drift_logs/ext_vae_dec6_drift_qed_s42.log",
+      "exists": true,
+      "num_evals": 61,
+      "last_eval": {
+        "epoch": 300,
+        "validity": 1.0,
+        "uniqueness": 0.991,
+        "novelty": 1.0,
+        "spearman_rho": 0.316,
+        "mae": 0.265,
+        "slope": 0.416,
+        "gate": "PASS"
+      },
+      "best_eval": {
+        "epoch": 250,
+        "validity": 1.0,
+        "uniqueness": 0.987,
+        "novelty": 1.0,
+        "spearman_rho": 0.359,
+        "mae": 0.268,
+        "slope": 0.485,
+        "gate": "PASS"
+      }
+    }
+  ]
+}

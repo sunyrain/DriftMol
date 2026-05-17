@@ -1,0 +1,110 @@
+{
+  "algorithm2_equivalence": {
+    "status": "PASS",
+    "max_abs_diff": 0.0,
+    "temperature": 0.05,
+    "shape": [
+      9,
+      13
+    ],
+    "n_pos": 11
+  },
+  "manifest": {
+    "status": "PASS",
+    "entries": 10,
+    "groups": {
+      "faithful_core": 4,
+      "faithful_allocation": 6
+    },
+    "missing_configs": [],
+    "completed_runs": 10,
+    "pending_runs": 0
+  },
+  "strict_protocol_configs": {
+    "status": "PASS",
+    "checked": 10,
+    "failures": []
+  },
+  "strict_run_completion": {
+    "status": "PASS",
+    "completed_runs": 10,
+    "pending_runs": 0,
+    "required_runs": 10
+  },
+  "collector_artifacts": {
+    "status": "PASS",
+    "missing": [],
+    "artifacts": [
+      "scripts/collect_faithful_drifting_results.py",
+      "scripts/render_faithful_supplement.py",
+      "scripts/defer_faithful_core_after_destructive.py",
+      "docs/DRIFTING_ALGORITHM_AUDIT.md",
+      "docs/SUPPLEMENT_FAITHFUL_DRIFTING.tex",
+      "docs/SUPPLEMENT_FAITHFUL_DRIFTING_INLINED.tex",
+      "docs/SUPPLEMENT_FAITHFUL_DRIFTING_AAAI.tex",
+      "DriftingMol_AAAI_FaithfulSupplement.pdf",
+      "results/faithful_drifting.csv",
+      "results/faithful_drifting_status.json",
+      "results/tables/tab_faithful_drifting_core.tex",
+      "results/tables/tab_faithful_drifting_allocation.tex",
+      "docs/DRIFTING_FAITHFULNESS_EXECUTION_CHECKLIST.md"
+    ]
+  },
+  "phi_checkpoints": {
+    "status": "PASS",
+    "checkpoints": {
+      "plain_latent_mae": "outputs/foundation/zinc_phi_plain/best_latent_mae.pt",
+      "property_latent_mae": "outputs/foundation/zinc_phi_prop/best_latent_mae.pt"
+    },
+    "exists": {
+      "plain_latent_mae": true,
+      "property_latent_mae": true
+    }
+  },
+  "existing_phi_results": {
+    "status": "PASS",
+    "found": {
+      "C1": {
+        "status": "complete_pass",
+        "rho": "0.2966171735498279",
+        "uniqueness": "0.9633",
+        "root": "final_phi"
+      },
+      "C2": {
+        "status": "complete_pass",
+        "rho": "0.32879778769864515",
+        "uniqueness": "0.9485",
+        "root": "final_phi"
+      },
+      "C3": {
+        "status": "complete_pass",
+        "rho": "0.31191933608344147",
+        "uniqueness": "0.9716",
+        "root": "final_phi"
+      },
+      "C4": {
+        "status": "complete_pass",
+        "rho": "0.28073139183668655",
+        "uniqueness": "0.9875",
+        "root": "final_phi"
+      },
+      "C5": {
+        "status": "complete_pass",
+        "rho": "0.2964371010809636",
+        "uniqueness": "0.9775",
+        "root": "final_phi"
+      }
+    },
+    "missing": []
+  },
+  "destructive_ablations": {
+    "status": "PASS",
+    "complete": 7,
+    "pending_or_incomplete": 0,
+    "status_counts": {
+      "complete_fail": 2,
+      "complete_pass": 5
+    }
+  },
+  "overall": "PASS"
+}

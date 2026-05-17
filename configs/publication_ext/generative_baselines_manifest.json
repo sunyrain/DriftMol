@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "name": "ext_GB_CVAE_QED_s42",
+      "group": "generative_baselines",
+      "family": "VAE",
+      "display": "Conditional latent VAE",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional VAE generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/cvae_qed_s42",
+      "command": "python scripts/train_latent_generative_baseline.py --method cvae --seed 42 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_GAN_QED_s42",
+      "group": "generative_baselines",
+      "family": "GAN",
+      "display": "Conditional latent WGAN-GP",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional GAN generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/gan_qed_s42",
+      "command": "python scripts/train_latent_generative_baseline.py --method gan --seed 42 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --n-critic 3 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_DDPM_QED_s42",
+      "group": "generative_baselines",
+      "family": "Diffusion",
+      "display": "Conditional latent DDPM",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional diffusion generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/diffusion_qed_s42",
+      "command": "python scripts/train_latent_generative_baseline.py --method diffusion --seed 42 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --diffusion-steps 100 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_FM_QED_s42",
+      "group": "generative_baselines",
+      "family": "Flow Matching",
+      "display": "Conditional latent Flow Matching",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional flow-matching generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/flow_matching_qed_s42",
+      "command": "python scripts/train_latent_generative_baseline.py --method flow_matching --seed 42 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --sample-steps 50 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_CVAE_QED_s43",
+      "group": "generative_baselines",
+      "family": "VAE",
+      "display": "Conditional latent VAE",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional VAE generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/cvae_qed_s43",
+      "command": "python scripts/train_latent_generative_baseline.py --method cvae --seed 43 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_GAN_QED_s43",
+      "group": "generative_baselines",
+      "family": "GAN",
+      "display": "Conditional latent WGAN-GP",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional GAN generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/gan_qed_s43",
+      "command": "python scripts/train_latent_generative_baseline.py --method gan --seed 43 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --n-critic 3 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_DDPM_QED_s43",
+      "group": "generative_baselines",
+      "family": "Diffusion",
+      "display": "Conditional latent DDPM",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional diffusion generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/diffusion_qed_s43",
+      "command": "python scripts/train_latent_generative_baseline.py --method diffusion --seed 43 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --diffusion-steps 100 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_FM_QED_s43",
+      "group": "generative_baselines",
+      "family": "Flow Matching",
+      "display": "Conditional latent Flow Matching",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional flow-matching generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/flow_matching_qed_s43",
+      "command": "python scripts/train_latent_generative_baseline.py --method flow_matching --seed 43 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --sample-steps 50 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_CVAE_QED_s44",
+      "group": "generative_baselines",
+      "family": "VAE",
+      "display": "Conditional latent VAE",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional VAE generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/cvae_qed_s44",
+      "command": "python scripts/train_latent_generative_baseline.py --method cvae --seed 44 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_GAN_QED_s44",
+      "group": "generative_baselines",
+      "family": "GAN",
+      "display": "Conditional latent WGAN-GP",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional GAN generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/gan_qed_s44",
+      "command": "python scripts/train_latent_generative_baseline.py --method gan --seed 44 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --noise-dim 128 --n-critic 3 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_DDPM_QED_s44",
+      "group": "generative_baselines",
+      "family": "Diffusion",
+      "display": "Conditional latent DDPM",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional diffusion generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/diffusion_qed_s44",
+      "command": "python scripts/train_latent_generative_baseline.py --method diffusion --seed 44 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --diffusion-steps 100 --num-samples 10000"
+    },
+    {
+      "name": "ext_GB_FM_QED_s44",
+      "group": "generative_baselines",
+      "family": "Flow Matching",
+      "display": "Conditional latent Flow Matching",
+      "target_property": "QED",
+      "purpose": "Same-backbone conditional flow-matching generative baseline under the 20-bin QED target protocol.",
+      "output_dir": "outputs/publication_ext/generative_baselines/flow_matching_qed_s44",
+      "command": "python scripts/train_latent_generative_baseline.py --method flow_matching --seed 44 --epochs 80 --steps-per-epoch 250 --batch-size 1024 --hidden-dim 512 --num-layers 3 --sample-steps 50 --num-samples 10000"
+    }
+  ]
+}

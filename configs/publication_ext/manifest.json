@@ -1,0 +1,99 @@
+{
+  "description": "Extension-stage DriftingMol experiment matrix.",
+  "notes": [
+    "These runs are not part of the audited 8-page AAAI draft.",
+    "The destructive_drift group tests whether the V+ - V- construction and normalization are necessary.",
+    "The vae_sensitivity group tests beta, latent bottleneck, and decoder-capacity dependence before downstream drift reruns.",
+    "Run with: python scripts/run_publication_experiments.py --manifest configs/publication_ext/manifest.json --group destructive_drift"
+  ],
+  "entries": [
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_ATTR_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_ATTR_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_ATTR_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_ATTR_qed_s42.yaml",
+      "purpose": "attraction-only drift; removes repulsive term V-"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_REPL_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_REPL_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_REPL_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_REPL_qed_s42.yaml",
+      "purpose": "repulsion-only drift; removes attractive term V+"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_BROKEN_ATTR_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_BROKEN_ATTR_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_BROKEN_ATTR_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_BROKEN_ATTR_qed_s42.yaml",
+      "purpose": "broken anti-symmetry with overweighted attraction"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_BROKEN_REPL_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_BROKEN_REPL_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_BROKEN_REPL_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_BROKEN_REPL_qed_s42.yaml",
+      "purpose": "broken anti-symmetry with overweighted repulsion"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_YONLY_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_YONLY_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_YONLY_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_YONLY_qed_s42.yaml",
+      "purpose": "remove x-axis component of bidimensional normalization"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_NOCROSS_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_NOCROSS_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_NOCROSS_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_NOCROSS_qed_s42.yaml",
+      "purpose": "remove cross-multiplication while keeping bidimensional softmax"
+    },
+    {
+      "group": "destructive_drift",
+      "name": "ext_D_NONORM_qed_s42",
+      "config": "configs/publication_ext/destructive/ext_D_NONORM_qed_s42.yaml",
+      "output_dir": "outputs/publication_ext/destructive/ext_D_NONORM_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/destructive/ext_D_NONORM_qed_s42.yaml",
+      "purpose": "remove normalized attention and use raw exponentiated kernel"
+    },
+    {
+      "group": "vae_sensitivity",
+      "name": "ext_V_BETA_LOW_vae_s42",
+      "config": "configs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42",
+      "command": "python -m src.train.train_selfies_vae --config configs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42.yaml",
+      "purpose": "lower beta tests whether a more information-rich latent changes prior quality"
+    },
+    {
+      "group": "vae_sensitivity",
+      "name": "ext_V_BETA_HIGH_vae_s42",
+      "config": "configs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42",
+      "command": "python -m src.train.train_selfies_vae --config configs/publication_ext/vae_sensitivity/ext_V_BETA_HIGH_vae_s42.yaml",
+      "purpose": "higher beta tests whether stronger regularization weakens conditional control"
+    },
+    {
+      "group": "vae_sensitivity",
+      "name": "ext_V_LATENT128_vae_s42",
+      "config": "configs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42",
+      "command": "python -m src.train.train_selfies_vae --config configs/publication_ext/vae_sensitivity/ext_V_LATENT128_vae_s42.yaml",
+      "purpose": "latent dimension sensitivity with a narrower latent bottleneck"
+    },
+    {
+      "group": "vae_sensitivity",
+      "name": "ext_V_DEC6_vae_s42",
+      "config": "configs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42.yaml",
+      "output_dir": "outputs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42",
+      "command": "python -m src.train.train_selfies_vae --config configs/publication_ext/vae_sensitivity/ext_V_DEC6_vae_s42.yaml",
+      "purpose": "decoder-capacity sensitivity with a deeper decoder"
+    }
+  ]
+}

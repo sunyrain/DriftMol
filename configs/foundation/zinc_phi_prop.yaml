@@ -1,0 +1,44 @@
+# ═══════════════════════════════════════════════════════════════
+# φ-prop: MAE + 4属性监督的 LatentMAE
+#
+# 在 MAE 重建基础上加入 4 属性 (QED, SA, LogP, MolWt) 回归头,
+# 梯度回传 encoder，使 φ-space 直接编码属性信息。
+# 输出 512D feature space (与 decoder-φ 的 512D 对齐)。
+#
+# Usage:
+#   python -m src.train.train_latent_mae configs/foundation/zinc_phi_prop.yaml
+# ═══════════════════════════════════════════════════════════════
+
+output_dir: outputs/foundation/zinc_phi_prop
+latent_cache_path: data/cache/zinc_latent_cache_v2.pt
+
+# ── Architecture ──
+phi_dim: 512               # 与 decoder-φ (512D) 对齐
+hidden_dim: 512
+num_encoder_layers: 6
+num_decoder_layers: 3
+mask_ratio: 0.5
+normalize_output: false
+dropout: 0.1
+
+# ── Training ──
+seed: 42
+device: cuda
+epochs: 400
+batch_size: 2048
+lr: 5.0e-4
+weight_decay: 1.0e-4
+warmup_epochs: 10
+lr_schedule: cosine
+min_lr_ratio: 0.01
+
+# ── Losses ──
+lambda_recon: 1.0
+
+# 4 属性监督 (QED, SA, LogP, MolWt)
+num_properties: 4
+lambda_prop: 1.0
+prop_grad_through_encoder: true   # 梯度回传 encoder
+
+# 无对比学习
+contrastive_mode: none

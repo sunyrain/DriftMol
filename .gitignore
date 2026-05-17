@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+*.egg
+
+# Model checkpoints & data (large binary files)
+*.pt
+*.pth
+*.ckpt
+outputs/
+data/cache/
+data/raw/
+
+# Archive (internal development history)
+archive/
+
+# Logs
+logs/
+*.log
+nohup.out
+
+# Local credential/setup files
+/*setup*.sh
+*.env
+.env*
+
+# Generated paper artifacts kept local, not in the GitHub repository
+/DriftingModels.pdf
+/DriftingMol_*.pdf
+/DriftingMol_*.aux
+/DriftingMol_*.bbl
+/DriftingMol_*.blg
+/DriftingMol_*.fdb_latexmk
+/DriftingMol_*.fls
+/results/pdf_preview/
+/submission/
+
+# Compressed files
+*.tar
+*.tar.gz
+*.zip
+
+# OS / IDE
+.DS_Store
+.vscode/
+*.swp
+*~

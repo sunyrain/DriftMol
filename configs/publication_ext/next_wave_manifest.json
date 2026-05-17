@@ -1,0 +1,73 @@
+{
+  "description": "Next-wave reviewer experiments prepared but not launched while GPUs and disk are constrained.",
+  "resource_policy": {
+    "launch_now": false,
+    "reason": "All four GPUs are occupied by active VAE-drift jobs and /root/autodl-tmp has limited free disk.",
+    "minimum_recommended_disk_free_gb": 20
+  },
+  "notes": [
+    "These jobs are intentionally outside the strict extension completion gate.",
+    "Launch after the current VAE-drift, generalization, and reviewer-extra queues finish or after explicit re-prioritization.",
+    "The first three rows strengthen baseline coverage for property-transfer claims.",
+    "The fourth row strengthens the continuous-conditioning claim if the seed-42 run is promising."
+  ],
+  "entries": [
+    {
+      "group": "property_guidance_baseline",
+      "name": "ext_NW_LINEAR_PROP_LOGP_s42",
+      "display": "LogP linear property-guidance baseline",
+      "target_property": "logp",
+      "config": "configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_LOGP_s42.yaml",
+      "output_dir": "outputs/publication_ext/next_wave/ext_NW_LINEAR_PROP_LOGP_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_LOGP_s42.yaml",
+      "purpose": "tests whether LogP transfer is explainable by a fixed linear latent-property head",
+      "recommended_wait_for": [
+        "outputs/publication_ext/generalization/ext_G4_logp_qed_s42/final_metrics.json"
+      ],
+      "comparator": "ext_G4_logp_qed_s42 and ext_G4_logp_qed_s43"
+    },
+    {
+      "group": "property_guidance_baseline",
+      "name": "ext_NW_LINEAR_PROP_SA_s42",
+      "display": "SA linear property-guidance baseline",
+      "target_property": "sa_score",
+      "config": "configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_SA_s42.yaml",
+      "output_dir": "outputs/publication_ext/next_wave/ext_NW_LINEAR_PROP_SA_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_SA_s42.yaml",
+      "purpose": "tests whether SA-score transfer is explainable by a fixed linear latent-property head",
+      "recommended_wait_for": [
+        "outputs/publication_ext/generalization/ext_G4_sa_qed_s42/final_metrics.json"
+      ],
+      "comparator": "ext_G4_sa_qed_s42 and ext_G4_sa_qed_s43"
+    },
+    {
+      "group": "property_guidance_baseline",
+      "name": "ext_NW_LINEAR_PROP_MULTI4_s42",
+      "display": "Multi-property linear guidance baseline",
+      "target_property": "multi4",
+      "config": "configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_MULTI4_s42.yaml",
+      "output_dir": "outputs/publication_ext/next_wave/ext_NW_LINEAR_PROP_MULTI4_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/next_wave/ext_NW_LINEAR_PROP_MULTI4_s42.yaml",
+      "purpose": "tests whether four-property no-binning control needs Drifting rather than fixed linear guidance",
+      "recommended_wait_for": [
+        "outputs/publication_ext/generalization/ext_G4_multi4_v2_s43/final_metrics.json",
+        "outputs/publication_ext/generalization/ext_G4_multi4_v2_s44/final_metrics.json"
+      ],
+      "comparator": "pub_G4_multi4_v2_s42 plus ext_G4_multi4_v2_s43/s44"
+    },
+    {
+      "group": "conditioning_seed_stability",
+      "name": "ext_NW_QED_CONTINUOUS_s43",
+      "display": "Continuous QED control, seed 43",
+      "target_property": "qed",
+      "config": "configs/publication_ext/next_wave/ext_NW_QED_CONTINUOUS_s43.yaml",
+      "output_dir": "outputs/publication_ext/next_wave/ext_NW_QED_CONTINUOUS_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/next_wave/ext_NW_QED_CONTINUOUS_s43.yaml",
+      "purpose": "adds a second seed for the no-binning QED control test",
+      "recommended_wait_for": [
+        "outputs/publication_ext/reviewer_extra/ext_G4_qed_continuous_s42/final_metrics.json"
+      ],
+      "comparator": "ext_G4_qed_continuous_s42"
+    }
+  ]
+}

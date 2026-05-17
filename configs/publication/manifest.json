@@ -1,0 +1,179 @@
+{
+  "description": "Publication-stage DriftingMol experiment matrix.",
+  "notes": [
+    "qed_3seed gives confidence intervals for the main QED table.",
+    "paper_faithfulness_audit isolates deviations from DriftingModels.pdf.",
+    "zdiv_pareto quantifies the rho/uniqueness tradeoff.",
+    "multi4_v2 avoids the legacy QED-only binning protocol."
+  ],
+  "entries": [
+    {
+      "group": "qed_3seed",
+      "name": "pub_F_qed_s42",
+      "config": "configs/publication/pub_F_qed_s42.yaml",
+      "output_dir": "outputs/publication/seeds/pub_F_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_F_qed_s42.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_F_qed_s43",
+      "config": "configs/publication/pub_F_qed_s43.yaml",
+      "output_dir": "outputs/publication/seeds/pub_F_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_F_qed_s43.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_F_qed_s44",
+      "config": "configs/publication/pub_F_qed_s44.yaml",
+      "output_dir": "outputs/publication/seeds/pub_F_qed_s44",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_F_qed_s44.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A6_qed_s42",
+      "config": "configs/publication/pub_A6_qed_s42.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A6_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A6_qed_s42.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A6_qed_s43",
+      "config": "configs/publication/pub_A6_qed_s43.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A6_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A6_qed_s43.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A6_qed_s44",
+      "config": "configs/publication/pub_A6_qed_s44.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A6_qed_s44",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A6_qed_s44.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A8_qed_s42",
+      "config": "configs/publication/pub_A8_qed_s42.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A8_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A8_qed_s42.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A8_qed_s43",
+      "config": "configs/publication/pub_A8_qed_s43.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A8_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A8_qed_s43.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_A8_qed_s44",
+      "config": "configs/publication/pub_A8_qed_s44.yaml",
+      "output_dir": "outputs/publication/seeds/pub_A8_qed_s44",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_A8_qed_s44.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_G4_qed_s42",
+      "config": "configs/publication/pub_G4_qed_s42.yaml",
+      "output_dir": "outputs/publication/seeds/pub_G4_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_s42.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_G4_qed_s43",
+      "config": "configs/publication/pub_G4_qed_s43.yaml",
+      "output_dir": "outputs/publication/seeds/pub_G4_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_s43.yaml"
+    },
+    {
+      "group": "qed_3seed",
+      "name": "pub_G4_qed_s44",
+      "config": "configs/publication/pub_G4_qed_s44.yaml",
+      "output_dir": "outputs/publication/seeds/pub_G4_qed_s44",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_s44.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P1_paper_tau_batch_lambda_qed_s42",
+      "config": "configs/publication/pub_P1_paper_tau_batch_lambda_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P1_paper_tau_batch_lambda_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P1_paper_tau_batch_lambda_qed_s42.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P2_paper_tau_fixed_lambda_qed_s42",
+      "config": "configs/publication/pub_P2_paper_tau_fixed_lambda_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P2_paper_tau_fixed_lambda_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P2_paper_tau_fixed_lambda_qed_s42.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P3_no_cfg_qed_s42",
+      "config": "configs/publication/pub_P3_no_cfg_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P3_no_cfg_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P3_no_cfg_qed_s42.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P4_no_zdiv_qed_s42",
+      "config": "configs/publication/pub_P4_no_zdiv_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P4_no_zdiv_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P4_no_zdiv_qed_s42.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P5_y_only_norm_qed_s42",
+      "config": "configs/publication/pub_P5_y_only_norm_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P5_y_only_norm_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P5_y_only_norm_qed_s42.yaml"
+    },
+    {
+      "group": "paper_faithfulness_audit",
+      "name": "pub_P6_no_cross_norm_qed_s42",
+      "config": "configs/publication/pub_P6_no_cross_norm_qed_s42.yaml",
+      "output_dir": "outputs/publication/audit/pub_P6_no_cross_norm_qed_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_P6_no_cross_norm_qed_s42.yaml"
+    },
+    {
+      "group": "zdiv_pareto",
+      "name": "pub_G4_qed_zdiv0p0_s42",
+      "config": "configs/publication/pub_G4_qed_zdiv0p0_s42.yaml",
+      "output_dir": "outputs/publication/zdiv/pub_G4_qed_zdiv0p0_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_zdiv0p0_s42.yaml"
+    },
+    {
+      "group": "zdiv_pareto",
+      "name": "pub_G4_qed_zdiv0p5_s42",
+      "config": "configs/publication/pub_G4_qed_zdiv0p5_s42.yaml",
+      "output_dir": "outputs/publication/zdiv/pub_G4_qed_zdiv0p5_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_zdiv0p5_s42.yaml"
+    },
+    {
+      "group": "zdiv_pareto",
+      "name": "pub_G4_qed_zdiv1p0_s42",
+      "config": "configs/publication/pub_G4_qed_zdiv1p0_s42.yaml",
+      "output_dir": "outputs/publication/zdiv/pub_G4_qed_zdiv1p0_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_zdiv1p0_s42.yaml"
+    },
+    {
+      "group": "zdiv_pareto",
+      "name": "pub_G4_qed_zdiv2p0_s42",
+      "config": "configs/publication/pub_G4_qed_zdiv2p0_s42.yaml",
+      "output_dir": "outputs/publication/zdiv/pub_G4_qed_zdiv2p0_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_zdiv2p0_s42.yaml"
+    },
+    {
+      "group": "zdiv_pareto",
+      "name": "pub_G4_qed_zdiv4p0_s42",
+      "config": "configs/publication/pub_G4_qed_zdiv4p0_s42.yaml",
+      "output_dir": "outputs/publication/zdiv/pub_G4_qed_zdiv4p0_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_qed_zdiv4p0_s42.yaml"
+    },
+    {
+      "group": "multi4_v2",
+      "name": "pub_G4_multi4_v2_s42",
+      "config": "configs/publication/pub_G4_multi4_v2_s42.yaml",
+      "output_dir": "outputs/publication/multi4/pub_G4_multi4_v2_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication/pub_G4_multi4_v2_s42.yaml"
+    }
+  ]
+}

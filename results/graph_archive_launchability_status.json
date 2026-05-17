@@ -1,0 +1,138 @@
+{
+  "complete": true,
+  "archive_root": "archive/graph_vae_line",
+  "config_artifacts": [
+    {
+      "config": "archive/graph_vae_line/configs/e36_dec_drift_cfg.yaml",
+      "field": "vae.checkpoint",
+      "configured_path": "outputs/vae_v3_valence/best.pt",
+      "resolved_path": "archive/graph_vae_line/outputs/vae_v3_valence/best.pt",
+      "exists": true
+    },
+    {
+      "config": "archive/graph_vae_line/configs/e36_dec_drift_cfg.yaml",
+      "field": "phi.checkpoint",
+      "configured_path": "outputs/latent_mae_v3/best_latent_mae.pt",
+      "resolved_path": "archive/graph_vae_line/outputs/latent_mae_v3/best_latent_mae.pt",
+      "exists": true
+    },
+    {
+      "config": "archive/graph_vae_line/configs/e36_dec_drift_cfg.yaml",
+      "field": "data.latent_cache_path",
+      "configured_path": "data/cache/qm9_latent_cache_v3.pt",
+      "resolved_path": "archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt",
+      "exists": true
+    },
+    {
+      "config": "archive/graph_vae_line/configs/e40_logp_bins_queue.yaml",
+      "field": "vae.checkpoint",
+      "configured_path": "outputs/vae_v3_valence/best.pt",
+      "resolved_path": "archive/graph_vae_line/outputs/vae_v3_valence/best.pt",
+      "exists": true
+    },
+    {
+      "config": "archive/graph_vae_line/configs/e40_logp_bins_queue.yaml",
+      "field": "phi.checkpoint",
+      "configured_path": "outputs/latent_mae_v3/best_latent_mae.pt",
+      "resolved_path": "archive/graph_vae_line/outputs/latent_mae_v3/best_latent_mae.pt",
+      "exists": true
+    },
+    {
+      "config": "archive/graph_vae_line/configs/e40_logp_bins_queue.yaml",
+      "field": "data.latent_cache_path",
+      "configured_path": "data/cache/qm9_latent_cache_v3.pt",
+      "resolved_path": "archive/graph_vae_line/data/cache/qm9_latent_cache_v3.pt",
+      "exists": true
+    }
+  ],
+  "missing_required_artifacts": [],
+  "namespace": {
+    "src_imports": [
+      "src._compat",
+      "src.data.featurizer",
+      "src.data.qm9_dataset",
+      "src.drifting.drift_latent_phi",
+      "src.drifting.drift_v2",
+      "src.eval.metrics_molecular",
+      "src.eval.soft_valence",
+      "src.eval.validity_rdkit",
+      "src.models.graph_transformer_ae",
+      "src.models.graph_transformer_ae_v2",
+      "src.models.latent_mae",
+      "src.train.train_generator",
+      "src.train.train_selfies_cfg",
+      "src.train.train_vae",
+      "src.utils"
+    ],
+    "archive_src_package_exists": true,
+    "archive_src_utils_exists": true,
+    "namespace_adapter_plan_exists": true,
+    "current_utils": {
+      "path": "src/utils.py",
+      "exists": true,
+      "missing_graph_functions": [],
+      "ready": true
+    },
+    "blockers": []
+  },
+  "archived_diagnostic_runs": [
+    {
+      "name": "e36_dec_drift_cfg",
+      "property": "qed",
+      "metrics_path": "archive/graph_vae_line/outputs/e36_dec_drift_cfg/final_metrics.json",
+      "resolved_config_path": "archive/graph_vae_line/outputs/e36_dec_drift_cfg/resolved_config.json",
+      "metrics_exists": true,
+      "resolved_config_exists": true,
+      "best_prop_control": {
+        "alpha": "4.0",
+        "spearman_rho": 0.1593208191626374,
+        "prop_gap": 0.030499764683072805,
+        "n_valid_corr": 2000
+      },
+      "generation_at_best_alpha": {
+        "validity": 1.0,
+        "uniqueness": 0.2846,
+        "novelty": 0.775474349964863
+      }
+    },
+    {
+      "name": "e40_logp_bins_queue",
+      "property": "logp",
+      "metrics_path": "archive/graph_vae_line/outputs/e40_logp_bins_queue/final_metrics.json",
+      "resolved_config_path": "archive/graph_vae_line/outputs/e40_logp_bins_queue/resolved_config.json",
+      "metrics_exists": true,
+      "resolved_config_exists": true,
+      "best_prop_control": {
+        "alpha": "1.5",
+        "spearman_rho": 0.14542742114539733,
+        "prop_gap": 0.4438070200000006,
+        "n_valid_corr": 2000
+      },
+      "generation_at_best_alpha": {
+        "validity": 1.0,
+        "uniqueness": 0.2487,
+        "novelty": 0.7084841174105347
+      }
+    }
+  ],
+  "recovery_candidates": {
+    "graph_cache": {
+      "path": "archive/data_qm9/qm9_graph_cache.pt",
+      "exists": true
+    },
+    "legacy_latent_caches": [
+      "archive/data_qm9/qm9_latent_cache_v2kl01_props.pt",
+      "archive/data_qm9/qm9_latent_cache_v2kl01_props_v2.pt"
+    ],
+    "raw_sdf_candidates": [],
+    "vae_v3_valence_final_metrics": {
+      "path": "archive/graph_vae_line/outputs/vae_v3_valence/final_metrics.json",
+      "exists": true
+    },
+    "latent_mae_v3_train_log": {
+      "path": "archive/graph_vae_line/outputs/latent_mae_v3_train.log",
+      "exists": true,
+      "mentions_checkpoint": true
+    }
+  }
+}

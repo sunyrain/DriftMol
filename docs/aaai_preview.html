@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DriftingMol AAAI Preview</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #65717f;
+      --line: #d9e0e7;
+      --panel: #f7f9fb;
+      --blue: #1f6fae;
+      --orange: #c96c3a;
+      --green: #5e8c61;
+      --shadow: 0 16px 36px rgba(28, 42, 56, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 22px 42px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      max-width: 920px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .authors {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .affiliation {
+      margin: 4px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(92px, 1fr));
+      gap: 10px;
+      min-width: 230px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 10px 12px;
+    }
+
+    .metric b {
+      display: block;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .button.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+      gap: 22px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      margin: 0;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: min(76vh, 860px);
+      border: 0;
+      display: block;
+      background: #f2f5f8;
+    }
+
+    .summary {
+      padding: 16px;
+    }
+
+    .summary p {
+      margin: 0 0 14px;
+      color: #26313d;
+      font-size: 14px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      padding: 6px 9px;
+      color: #26313d;
+      background: var(--panel);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    figure img {
+      width: 100%;
+      display: block;
+      background: #fff;
+    }
+
+    figcaption {
+      padding: 10px 12px 12px;
+      border-top: 1px solid var(--line);
+      color: #303b47;
+      font-size: 13px;
+    }
+
+    .accent-blue {
+      color: var(--blue);
+    }
+
+    .accent-orange {
+      color: var(--orange);
+    }
+
+    .accent-green {
+      color: var(--green);
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 880px) {
+      header,
+      .main,
+      .figure-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .status {
+        grid-template-columns: repeat(4, minmax(72px, 1fr));
+      }
+
+      .pdf-frame {
+        height: 68vh;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .shell {
+        padding: 20px 14px 30px;
+      }
+
+      .status {
+        grid-template-columns: repeat(2, minmax(92px, 1fr));
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div>
+        <h1>DriftingMol: Decoder-Coupled Drift for One-Pass Property-Conditional Molecular Generation</h1>
+        <p class="authors">Jiangjie Qiu, Yijun Li, Wentao Li, Xiaonan Wang*</p>
+        <p class="affiliation">Beijing Key Laboratory of Artificial Intelligence for Advanced Chemical Engineering Materials</p>
+        <div class="actions" aria-label="Document links">
+          <a class="button primary" href="../DriftingMol_AAAI.pdf">Main paper PDF</a>
+          <a class="button" href="../DriftingMol_AAAI_Checklist.pdf">Checklist PDF</a>
+          <a class="button" href="../DriftingMol_AAAI_FaithfulSupplement.pdf">Faithful supplement PDF</a>
+          <a class="button" href="../submission/driftingmol_submission_source.zip">Submission source zip</a>
+          <a class="button" href="../results/publication_completion_audit.md">Audit report</a>
+          <a class="button" href="RUN_STATUS.md">Run status</a>
+        </div>
+      </div>
+      <div class="status" aria-label="Current build status">
+        <div class="metric"><b>9</b><span>Main PDF pages</span></div>
+        <div class="metric"><b>2</b><span>Extra PDFs</span></div>
+        <div class="metric"><b>95</b><span>Unit tests passed</span></div>
+        <div class="metric"><b>PASS</b><span>Publication audit</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="main">
+        <div class="panel">
+          <h2>Paper Preview</h2>
+          <iframe class="pdf-frame" src="../DriftingMol_AAAI.pdf#view=FitH" title="DriftingMol AAAI PDF preview"></iframe>
+        </div>
+
+        <aside class="panel">
+          <h2>Submission Snapshot</h2>
+          <div class="summary">
+            <p>DriftingMol is framed as a mechanism-focused ablation for single-step, property-conditional SELFIES latent molecular generation.</p>
+            <p>The current draft presents decoder-coupled drift as the key mechanism behind QED and multi-property control, with matched references, seed-level evidence, and z-diversity checks included.</p>
+            <p>Faithful-Drifting reproduction, destructive ablations, VAE architecture sensitivity, downstream alternative-VAE drifting, reviewer-extra baselines, next-wave controls, and graph stress evidence are complete. The current audit covers the AAAI source, final figure/table references, benchmark throughput markers, and the publication test suite.</p>
+            <p><strong class="accent-blue">Current draft:</strong> Xiaonan Wang is marked as the corresponding author. The checklist is stored separately from the main paper.</p>
+            <div class="chips">
+              <span class="chip">AAAI format</span>
+              <span class="chip">Image-2 main figure</span>
+              <span class="chip">ZINC250K</span>
+              <span class="chip">SELFIES VAE</span>
+              <span class="chip">1 NFE</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="figure-grid" aria-label="Paper figures">
+        <figure>
+          <img src="figures/fig1_main.png" alt="DriftingMol mechanism figure">
+          <figcaption><strong>Figure 1.</strong> Coupled decoder drift mechanism generated as the main raster figure.</figcaption>
+        </figure>
+        <figure>
+          <img src="figures/fig2_qed_ablation.png" alt="QED ablation mechanism summary figure">
+          <figcaption><strong>Figure 2.</strong> Script-generated best-alpha QED ablation ranking and mechanism-group summary.</figcaption>
+        </figure>
+        <figure>
+          <img src="figures/fig5_zdiv_pareto.png" alt="Z-diversity sweep figure">
+          <figcaption><strong>Figure 3.</strong> <span class="accent-orange">Z-diversity</span> sensitivity plotted directly from completed sweep results.</figcaption>
+        </figure>
+        <figure>
+          <img src="figures/fig4_qed_seed_ci.png" alt="Three-seed QED stability figure">
+          <figcaption><strong>Figure 4.</strong> Three-seed QED stability shown as point estimates with 95% confidence intervals.</figcaption>
+        </figure>
+        <figure>
+          <img src="figures/fig3_multi4_v2.png" alt="Four-property control heatmap figure">
+          <figcaption><strong>Figure 5.</strong> <span class="accent-green">Four-property</span> control under the fair v2 no-binning protocol.</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer>
+      * Corresponding author. Static preview generated from the current local build artifacts.
+    </footer>
+  </div>
+</body>
+</html>

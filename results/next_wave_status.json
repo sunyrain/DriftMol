@@ -1,0 +1,22 @@
+{
+  "manifest": "configs/publication_ext/next_wave_manifest.json",
+  "num_experiments": 4,
+  "complete": 4,
+  "pending_or_incomplete": 0,
+  "status_counts": {
+    "complete_pass": 4
+  },
+  "groups": {
+    "conditioning_seed_stability": {
+      "total": 1,
+      "complete": 1,
+      "pending_or_incomplete": 0
+    },
+    "property_guidance_baseline": {
+      "total": 3,
+      "complete": 3,
+      "pending_or_incomplete": 0
+    }
+  },
+  "pending_or_incomplete_entries": []
+}

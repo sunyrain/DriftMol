@@ -1,0 +1,11 @@
+{
+  "num_experiments": 4,
+  "complete": 4,
+  "pending_or_incomplete": 0,
+  "minimum_completed_runs_for_downstream_sensitivity": 1,
+  "minimum_completed_runs_reached": true,
+  "status_counts": {
+    "complete_pass": 4
+  },
+  "pending_or_incomplete_entries": []
+}

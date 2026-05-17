@@ -1,0 +1,13 @@
+{
+  "manifest": "configs/publication_ext/manifest.json",
+  "num_experiments": 7,
+  "complete": 7,
+  "pending_or_incomplete": 0,
+  "minimum_completed_runs_for_table": 3,
+  "minimum_completed_runs_reached": true,
+  "status_counts": {
+    "complete_fail": 2,
+    "complete_pass": 5
+  },
+  "pending_or_incomplete_entries": []
+}

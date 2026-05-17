@@ -1,0 +1,56 @@
+{
+  "description": "Additional reviewer-facing experiments queued after the current VAE-drift and generalization blockers.",
+  "notes": [
+    "These entries are intentionally not launched until their predecessor jobs finish.",
+    "The set targets three high-value risks: QED bin dependence, single-property transfer seed stability, and alternative-VAE downstream seed stability.",
+    "They are extension evidence and should be interpreted separately from the locked 8-page draft until complete."
+  ],
+  "entries": [
+    {
+      "group": "continuous_conditioning",
+      "name": "ext_G4_qed_continuous_s42",
+      "display": "QED continuous control",
+      "target_property": "qed",
+      "config": "configs/publication_ext/reviewer_extra/ext_G4_qed_continuous_s42.yaml",
+      "output_dir": "outputs/publication_ext/reviewer_extra/ext_G4_qed_continuous_s42",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/reviewer_extra/ext_G4_qed_continuous_s42.yaml",
+      "purpose": "tests whether QED control is caused by quantile-bin conditioning rather than continuous target guidance"
+    },
+    {
+      "group": "single_property_seed_extension",
+      "name": "ext_G4_logp_qed_s43",
+      "display": "LogP transfer, seed 43",
+      "target_property": "logp",
+      "config": "configs/publication_ext/reviewer_extra/ext_G4_logp_qed_s43.yaml",
+      "output_dir": "outputs/publication_ext/reviewer_extra/ext_G4_logp_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/reviewer_extra/ext_G4_logp_qed_s43.yaml",
+      "purpose": "second-seed LogP transfer check for single-property generalization"
+    },
+    {
+      "group": "single_property_seed_extension",
+      "name": "ext_G4_sa_qed_s43",
+      "display": "SA transfer, seed 43",
+      "target_property": "sa_score",
+      "config": "configs/publication_ext/reviewer_extra/ext_G4_sa_qed_s43.yaml",
+      "output_dir": "outputs/publication_ext/reviewer_extra/ext_G4_sa_qed_s43",
+      "command": "python -m src.train.train_selfies_cfg --config configs/publication_ext/reviewer_extra/ext_G4_sa_qed_s43.yaml",
+      "purpose": "second-seed SA-score transfer check for single-property generalization"
+    },
+    {
+      "group": "vae_drift_seed_extension",
+      "name": "ext_vae_lowbeta_drift_qed_s43",
+      "display": "Low-beta VAE drift, seed 43",
+      "target_property": "qed",
+      "config": "configs/publication_ext/reviewer_extra/ext_vae_lowbeta_drift_qed_s43.yaml",
+      "output_dir": "outputs/publication_ext/reviewer_extra/ext_vae_lowbeta_drift_qed_s43",
+      "command": "test -f outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/final_metrics.json && if [ ! -f data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt ]; then python scripts/build_selfies_latent_cache.py --vae_ckpt outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/best.pt --graph_cache data/cache/zinc250k_smiles_cache.pt --output data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt --batch_size 2048; fi && python -m src.train.train_selfies_cfg --config configs/publication_ext/reviewer_extra/ext_vae_lowbeta_drift_qed_s43.yaml",
+      "purpose": "second generator seed for the strongest live alternative-VAE downstream drift line",
+      "depends_on": [
+        "outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/final_metrics.json"
+      ],
+      "vae_run": "ext_V_BETA_LOW_vae_s42",
+      "vae_checkpoint": "outputs/publication_ext/vae_sensitivity/ext_V_BETA_LOW_vae_s42/best.pt",
+      "latent_cache": "data/cache/zinc_latent_cache_ext_vae_lowbeta_s42.pt"
+    }
+  ]
+}

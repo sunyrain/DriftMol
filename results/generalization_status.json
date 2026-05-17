@@ -1,0 +1,32 @@
+{
+  "manifest": "configs/publication_ext/generalization_manifest.json",
+  "num_experiments": 4,
+  "complete": 4,
+  "pending_or_incomplete": 0,
+  "status_counts": {
+    "complete_pass": 4
+  },
+  "groups": {
+    "multi4_seed_stability": {
+      "total": 2,
+      "complete": 2,
+      "pending_or_incomplete": 0
+    },
+    "single_property_generalization": {
+      "total": 2,
+      "complete": 2,
+      "pending_or_incomplete": 0
+    }
+  },
+  "multi4_avg_rho": {
+    "n": 2,
+    "seeds": "43,44",
+    "avg_spearman_rho_mean": 0.48590271257942985,
+    "avg_spearman_rho_std": 0.0037356739432004853
+  },
+  "single_property_rho": {
+    "logp": 0.6390871783061988,
+    "sa_score": 0.4554133822846478
+  },
+  "pending_or_incomplete_entries": []
+}

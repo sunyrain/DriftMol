@@ -1,0 +1,20 @@
+{
+  "manifest": "configs/reviewer_faithful/manifest.json",
+  "num_experiments": 10,
+  "complete": 10,
+  "pending_or_incomplete": 0,
+  "faithful_core_complete": true,
+  "groups": {
+    "faithful_allocation": {
+      "total": 6,
+      "complete": 6,
+      "pending": 0
+    },
+    "faithful_core": {
+      "total": 4,
+      "complete": 4,
+      "pending": 0
+    }
+  },
+  "pending_or_incomplete_entries": []
+}

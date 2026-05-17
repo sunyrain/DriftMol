@@ -1,0 +1,81 @@
+vae:
+  checkpoint: outputs/foundation/zinc_selfies_vae_v2/best.pt
+feature_space:
+  mode: none
+data:
+  latent_cache_path: data/cache/zinc_latent_cache_v2.pt
+  prop_indices:
+  - 2
+generator:
+  type: latent_dit_cfg
+  noise_dim: 64
+  hidden_dim: 384
+  num_layers: 8
+  num_heads: 8
+  num_tokens: 16
+  mlp_ratio: 4
+  dropout: 0.1
+  token_noise_std: 0.03
+  p_uncond: 0.1
+  cond_dim: 1
+training:
+  epochs: 300
+  lr: 0.0002
+  weight_decay: 0.01
+  ema_decay: 0.999
+  warmup_epochs: 5
+  lr_schedule: cosine
+  min_lr_ratio: 0.01
+  grad_clip_norm: 1.0
+loss:
+  lambda_drift: 0.0
+  lambda_decoupled_drift: 0.0
+  lambda_zdrift: 0.0
+  lambda_dec_drift: 0.0
+  temperatures:
+  - 0.5
+  - 1.0
+  - 2.0
+  drift_normalize: true
+  drift_normalize_dist: true
+  drift_normalize_mode: fixed
+  drift_norm_mode: xy
+  lambda_zmatch: 0.0
+  lambda_prop: 1.0
+  lambda_moment: 0.0
+  lambda_zdiv: 2.0
+  zdiv_margin: 3.0
+  zdiv_topk: 5
+  lambda_znorm: 0.0
+cfg:
+  n_groups: 32
+  n_gen: 32
+  n_pos: 2048
+  n_unc: 32
+  positive_mode: prop
+  knn_pool_factor: 4
+  alpha_power: 3
+  alpha_min: 1.0
+  alpha_max: 4.0
+cond_binning:
+  enabled: false
+selection:
+  eval_every_epochs: 5
+  num_generated_samples: 2000
+  sample_batch_size: 512
+  eval_alpha: 3.0
+eval:
+  num_generated_samples: 10000
+  alpha_sweep:
+  - 1.0
+  - 1.5
+  - 2.0
+  - 3.0
+  - 5.0
+prop_head:
+  type: linear
+  ridge_alpha: 10.0
+experiment:
+  name: ext_NW_LINEAR_PROP_LOGP_s42
+  output_dir: outputs/publication_ext/next_wave/ext_NW_LINEAR_PROP_LOGP_s42
+  seed: 42

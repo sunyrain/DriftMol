@@ -1,0 +1,23 @@
+{
+  "manifest": "configs/publication_ext/baseline_manifest.json",
+  "num_experiments": 3,
+  "complete": 3,
+  "pending_or_incomplete": 0,
+  "three_seed_complete": true,
+  "status_counts": {
+    "complete_pass": 3
+  },
+  "aggregate": {
+    "n": 3,
+    "seeds": "42,43,44",
+    "rho_mean": 0.04607536754420772,
+    "rho_std": 0.15007720203087255,
+    "uniqueness_mean": 0.9289262259559289,
+    "uniqueness_std": 0.02597495459552524,
+    "mae_mean": 0.334802837901528,
+    "mae_std": 0.09600783970218105,
+    "slope_mean": 0.08105284042704491,
+    "slope_std": 0.2016299633942556
+  },
+  "pending_or_incomplete_entries": []
+}

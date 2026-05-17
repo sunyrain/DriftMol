@@ -1,0 +1,8 @@
+{
+  "num_experiments": 4,
+  "complete": 4,
+  "pending_or_incomplete": 0,
+  "minimum_completed_runs_for_sensitivity": 1,
+  "minimum_completed_runs_reached": true,
+  "pending_or_incomplete_entries": []
+}

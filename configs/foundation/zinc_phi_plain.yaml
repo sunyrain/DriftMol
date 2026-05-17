@@ -1,0 +1,42 @@
+# ═══════════════════════════════════════════════════════════════
+# φ-plain: 纯 MAE 重建的 LatentMAE (最接近原始 Drifting Models 论文)
+#
+# 不使用任何属性监督信号，仅通过 z-space 掩码重建学习语义。
+# 输出 512D feature space (与 decoder-φ 的 512D 对齐，公平对比)。
+#
+# Usage:
+#   python -m src.train.train_latent_mae configs/foundation/zinc_phi_plain.yaml
+# ═══════════════════════════════════════════════════════════════
+
+output_dir: outputs/foundation/zinc_phi_plain
+latent_cache_path: data/cache/zinc_latent_cache_v2.pt
+
+# ── Architecture ──
+phi_dim: 512               # 与 decoder-φ (512D) 对齐，公平对比
+hidden_dim: 512
+num_encoder_layers: 6      # 中等深度
+num_decoder_layers: 3
+mask_ratio: 0.5            # 掩码 50% 维度
+normalize_output: false    # drift 不需要 L2 归一化
+dropout: 0.1
+
+# ── Training ──
+seed: 42
+device: cuda
+epochs: 400                # 充分训练
+batch_size: 2048
+lr: 5.0e-4
+weight_decay: 1.0e-4
+warmup_epochs: 10
+lr_schedule: cosine
+min_lr_ratio: 0.01
+
+# ── Losses ──
+lambda_recon: 1.0          # 纯重建
+
+# 无属性监督
+num_properties: 0
+lambda_prop: 0.0
+
+# 无对比学习
+contrastive_mode: none

@@ -1,0 +1,17 @@
+{
+  "config": "configs/publication/pub_F_qed_s43.yaml",
+  "checkpoint": "outputs/publication/seeds/pub_F_qed_s43/best.pt",
+  "device": "cuda",
+  "num_samples": 20000,
+  "batch_size": 1000,
+  "alpha": 5.0,
+  "condition": 0.0,
+  "nfe": 1,
+  "two_pass_cfg": false,
+  "generator_seconds": 0.4207583100069314,
+  "decoder_logits_seconds": 1.6142383169790264,
+  "end_to_end_seconds": 4.3438884539937135,
+  "generator_mol_per_s": 47533.226378037616,
+  "decoder_logits_mol_per_s": 12389.744308281004,
+  "end_to_end_mol_per_s": 4604.169792070113
+}
